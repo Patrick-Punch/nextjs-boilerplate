@@ -1,4 +1,4 @@
-import { Pokemon } from "@/types/pokemon";
+import { Pokemon } from "@/types/item";
 
 // map variable
 const cachedPokemon= new Map<string, Pokemon>()

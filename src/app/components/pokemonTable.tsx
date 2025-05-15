@@ -1,4 +1,4 @@
-import { Pokemon } from "@/types/pokemon";
+import { Pokemon } from "@/types/item";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 import { usePokemonProvider } from "@/app/context/itemContext";
 
