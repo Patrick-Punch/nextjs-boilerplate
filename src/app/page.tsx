@@ -6,7 +6,6 @@ import { Box } from "@mui/material";
 
 import TypeSelect from "./components/typeSelect";
 import PokemonTable from "./components/pokemonTable";
-import GenericTable from "./components/table"
 
 export default function Home() {
 

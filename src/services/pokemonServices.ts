@@ -1,6 +1,6 @@
 import { Pokemon } from "@/types/item"
 
-import { getPokemonFromCache, setPokemonInCache } from "./pokemonCache"
+import { getItemFromCache, setItemInCache } from "./itemCache"
 
 export async function fetchSomePokemon(limit: number, offset: number){
     const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
@@ -17,7 +17,7 @@ export async function fetchSomePokemon(limit: number, offset: number){
 
 async function fetchPokemon(url: string){
 
-    let pokemon = getPokemonFromCache(url)
+    let pokemon = getItemFromCache(url)
     if (pokemon){
         return pokemon
     }
@@ -35,7 +35,7 @@ async function fetchPokemon(url: string){
         types: data["types"].map((obj: any)=>obj["type"]["name"]),
     }
 
-    setPokemonInCache(url, pokemon)
+    setItemInCache(url, pokemon)
     return pokemon
 }
 
