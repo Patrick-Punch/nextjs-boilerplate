@@ -1,6 +1,6 @@
 import { Pokemon } from "@/types/pokemon";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
-import { usePokemonProvider } from "@/app/context/pokemonContext";
+import { usePokemonProvider } from "@/app/context/itemContext";
 
 
 export default function PokemonTable(){

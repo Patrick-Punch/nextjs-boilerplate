@@ -2,7 +2,7 @@
 import { Pokemon } from "@/types/pokemon"
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-type PokemonContextType = {
+type itemContextType = {
     pokemon: Pokemon[];
     types: string[];
     limit: number;
@@ -14,7 +14,7 @@ type PokemonContextType = {
     setActiveType: (calue: number) => void;
 }
 
-const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
+const PokemonContext = createContext<itemContextType | undefined>(undefined);
 
 export const ItemProvider = ({ children }: { children: ReactNode }) => {
     const [pokemon, setPokemon] = useState<Pokemon[]>([]);

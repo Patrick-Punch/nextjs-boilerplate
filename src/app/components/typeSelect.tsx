@@ -1,6 +1,6 @@
 import { Box, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material";
 
-import { usePokemonProvider } from "@/app/context/pokemonContext";
+import { usePokemonProvider } from "@/app/context/itemContext";
 
 
 

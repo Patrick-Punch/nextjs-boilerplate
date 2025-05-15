@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { PokemonProvider } from "@/app/context/pokemonContext";
+import { ItemProvider } from "@/app/context/itemContext";
 export const metadata: Metadata = {
-  title: "Assignment 7-1",
-  description: "Sorry you're sick Dan! -Patrick",
+  title: "webpage title",
+  description: "App description",
 };
 
 export default function RootLayout({
@@ -13,9 +13,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <PokemonProvider>
+        <ItemProvider>
           {children}
-        </PokemonProvider>
+        </ItemProvider>
       </body>
     </html>
   );
