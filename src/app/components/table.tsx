@@ -1,54 +1,28 @@
-import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material"
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 
-type DataType = {
-    id: number;
-    name: string;
-    imgUrl: string;
-    height: number;
-    weight: number;
-    abilities: string[];
-    types: string[];
-
+type TableProps<T> = {
+    headers: string[];
+    data: T[];
+    renderRow: (row: T) => React.ReactNode;
 };
-const headers = [
-    "ID",
-    "Name",
-    "Image",
-    "Height",
-    "Weight",
-    "Abilities",
-    "Types"
-]
 
-export default function PokemonTable( data: any[]){
-
-
+export default function GenericTable<T>({ headers, data, renderRow }: TableProps<T>) {
     return (
         <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {headers.map((header, i)=>
-              <TableCell key={i}>{header}</TableCell>
-              )}
-              
-            </TableRow>
-          </TableHead>
-          <TableBody>
-              {/* {props.data.map((d: Pokemon, i)=> */
-              data.map((d: DataType, i)=>
-                <TableRow key={i}>
-                  <TableCell>{d.id}</TableCell>
-                  <TableCell sx={{textTransform: "capitalize"}}>{d.name}</TableCell>
-                  <TableCell><img src={d.imgUrl} style={{width: 50}}/></TableCell>
-                  <TableCell>{d.height / 10}m</TableCell>
-                  <TableCell>{d.weight / 10}kg</TableCell>
-                  <TableCell sx={{textTransform: "capitalize"}}>{d.abilities.join(", ")}</TableCell>
-                  <TableCell sx={{textTransform: "capitalize"}}>{d.types.join(", ")}</TableCell>
-                </TableRow>
-              )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    )
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        {headers.map((header, i) => (
+                            <TableCell key={i}>{header}</TableCell>
+                        ))}
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {data.map((row, i) => (
+                        <TableRow key={i}>{renderRow(row)}</TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    );
 }
