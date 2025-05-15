@@ -40,5 +40,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 This app refrences the Pokemon API as a basic representation of website structures based off of an API. You can adjust what API is implemented in /services/pokemonServices
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-kevin is an idiot
