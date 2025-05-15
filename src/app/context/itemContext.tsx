@@ -51,10 +51,10 @@ export const ItemProvider = ({ children }: { children: ReactNode }) => {
     )
 }
 
-export function usePokemonProvider () {
+export function useItemProvider () {
     const context = useContext(ItemContext);
     if (!context){
-        throw new Error('usePokemonProvider must be used within a PokemonProvider');
+        throw new Error('useItemProvider must be used within a PokemonProvider');
     }
     return context;
 }
