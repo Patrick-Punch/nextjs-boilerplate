@@ -1,10 +1,10 @@
 import { Pokemon } from "@/types/item";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
-import { usePokemonProvider } from "@/app/context/itemContext";
+import { useItemProvider } from "@/app/context/itemContext";
 
 
 export default function PokemonTable(){
-  const { pokemon } = usePokemonProvider();
+  const { pokemon } = useItemProvider();
     const headers = [
         "ID",
         "Name",
