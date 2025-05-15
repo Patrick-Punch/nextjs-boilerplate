@@ -1,6 +1,6 @@
 import { Box, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material";
 
-import { usePokemonProvider } from "@/app/context/pokemonContext";
+import { useItemProvider } from "@/app/context/itemContext";
 
 
 
@@ -8,7 +8,7 @@ export default function TypeSelect(){
 
     const {
         types, limit, offset, activeType,
-        setLimit, setOffset, setActiveType } = usePokemonProvider();
+        setLimit, setOffset, setActiveType } = useItemProvider();
 
     return (
         <Box sx={{display: "flex", flexDirection: "row", width: "100%", m:2}}>

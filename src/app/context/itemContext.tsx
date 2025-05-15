@@ -1,29 +1,29 @@
 'use client'
-import { Pokemon } from "@/types/pokemon"
+import { Pokemon } from "@/types/item"
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-type PokemonContextType = {
+type itemContextType = {
     pokemon: Pokemon[];
     types: string[];
     limit: number;
     offset: number;
     activeType: number;
-    fetchPokemon: (pokeType: number) => void;
+    fetchItem: (pokeType: number) => void;
     setLimit: (value: number) => void;
     setOffset: (value: number) => void;
     setActiveType: (calue: number) => void;
 }
 
-const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
+const ItemContext = createContext<itemContextType | undefined>(undefined);
 
-export const PokemonProvider = ({ children }: { children: ReactNode }) => {
+export const ItemProvider = ({ children }: { children: ReactNode }) => {
     const [pokemon, setPokemon] = useState<Pokemon[]>([]);
     const [types, setTypes] = useState<string[]>(["all"]);
     const [limit, setLimit] = useState<number>(20);
     const [offset, setOffset] = useState<number>(0);
     const [activeType, setActiveType] = useState<number>(0);
 
-    function fetchPokemon(){
+    function fetchItem(){
         if (activeType == 0){
             fetch(`/api/pokemon?limit=${limit}&offset=${offset}`).
             then((r)=>r.json()).
@@ -36,25 +36,25 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
         }
     }
     useEffect(()=>{
-        fetchPokemon()
+        fetchItem()
         fetch('api/types').then((r)=>r.json()).then((d)=>setTypes([...types, ...d]))
     },[])
     
     useEffect(()=>{
-        fetchPokemon()
+        fetchItem()
     },[activeType, limit, offset])
 
     return (
-        <PokemonContext.Provider value={{ pokemon, types, limit, offset, activeType, setLimit, setOffset, setActiveType, fetchPokemon }}>
+        <ItemContext.Provider value={{ pokemon, types, limit, offset, activeType, setLimit, setOffset, setActiveType, fetchItem }}>
             {children}
-        </PokemonContext.Provider>
+        </ItemContext.Provider>
     )
 }
 
-export function usePokemonProvider () {
-    const context = useContext(PokemonContext);
+export function useItemProvider () {
+    const context = useContext(ItemContext);
     if (!context){
-        throw new Error('usePokemonProvider must be used within a PokemonProvider');
+        throw new Error('useItemProvider must be used within a PokemonProvider');
     }
     return context;
 }

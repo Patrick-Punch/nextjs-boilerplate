@@ -1,5 +1,5 @@
 import { type NextRequest } from 'next/server'
-import { Pokemon } from '@/types/pokemon'
+import { Pokemon } from '@/types/item'
 
 import {fetchSomePokemon} from "@/services/pokemonServices"
 export async function GET(request: NextRequest) {
